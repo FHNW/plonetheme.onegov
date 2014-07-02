@@ -42,8 +42,13 @@
     <after theme-children="/html/head" css:content="#portal-top style"/>
     <after theme-children="/html/head" css:content="#portal-top link"/>
 
+    <replace css:theme="#portal-title-main a" css:content-children="#portal-title-main" />
+    <replace css:theme="#portal-title-second a" css:content-children="#portal-title-second" />
+
+
     <replace css:content="#portal-logo" css:theme="#portal-logo" />
     <replace css:content="#portal-globalnav" css:theme="#portal-globalnav" />
+
     <replace css:content="#portal-searchbox" css:theme="#portal-searchbox" />
     <replace css:content="#portal-personaltools-wrapper" css:theme="#portal-personaltools-wrapper" />
     <replace css:content="#portal-languageselector-wrapper" css:theme="#portal-languageselector-wrapper" />
