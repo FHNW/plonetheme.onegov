@@ -95,4 +95,13 @@
 
   <stylesheet id="++theme++plonetheme.onegov/css/tinymce_popups.css" />
 
+  <stylesheet id="++theme++plonetheme.onegov/css/header.css"
+              title="" authenticated="False" cacheable="True"
+              compression="safe" conditionalcomment="" cookable="True" enabled="True"
+              expression="request/HTTP_X_THEME_ENABLED | nothing"
+              media="screen" rel="stylesheet"
+              rendering="link"
+              applyPrefix="True"
+              />
+
 </object>
