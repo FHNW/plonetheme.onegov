@@ -12,7 +12,7 @@
 * li { display: inline; }
 * h1,h2,h3,h4,h5,h6,pre,code { font-size:1em; }
 * a img,:link img,:visited img { border:none }
-a { outline: none; }
+a { outline: none !important; }
 table { border-spacing: 0; }
 img { vertical-align: text-bottom; }
 iframe { border-width: 0; border-style:none; }
