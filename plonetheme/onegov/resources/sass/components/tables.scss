@@ -5,6 +5,10 @@ caption {
 #column-content table {
   margin-bottom: 1em;
 }
+// excempt the fullcalendar table from this
+#column-content .fc-content table {
+    margin-bottom: 0;
+}
 table.listing,
 table.plain {
   max-width: 100%;
@@ -165,7 +169,7 @@ table.treeTable {
     Force tables to not be like tables anymore. Borrowed from this example:
     http://elvery.net/demo/responsive-tables/#no-more-tables
 */
-@media only screen and (max-width: 979px) {
+@media only screen and (max-width: $screen-tablet-landscape) {
     table.responsive,
     .responsive thead,
     .responsive tbody,

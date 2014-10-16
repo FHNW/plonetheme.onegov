@@ -1,7 +1,23 @@
 /* @group seantis.reservation */
 
 /* @group fullcalendar */
-#content {
+.pb-ajax, #content {
+    .fc-event-title {
+        font-size: 1.1em;
+    }
+    .fc-event-time {
+        font-size: 1.1em;
+        display: block;
+    }
+    .fc-view-agendaWeek .fc-event {
+        margin-left: 2px;
+    }
+    .fc-event-time,
+    .fc-event-title {
+        padding: 1px 0 0 2px;
+        display: block;
+    }
+
     .event-available {
         background-color: $reservation-available-color !important;
         border-color: $reservation-available-color  !important;
@@ -29,20 +45,20 @@
         }
     }
 
-    #seantis-overview-calendar .event-available, 
-    #seantis-overview-calendar .event-available .fc-event-skin, 
+    #seantis-overview-calendar .event-available,
+    #seantis-overview-calendar .event-available .fc-event-skin,
     #seantis-overview-calendar .event-available .fc-event-head {
         background-color: $reservation-available-color !important;
     }
 
-    #seantis-overview-calendar .event-partly-available, 
-    #seantis-overview-calendar .event-partly-available .fc-event-skin, 
+    #seantis-overview-calendar .event-partly-available,
+    #seantis-overview-calendar .event-partly-available .fc-event-skin,
     #seantis-overview-calendar .event-partly-available .fc-event-head {
         background-color: $reservation-partly-available-color !important;
     }
 
-    #seantis-overview-calendar .event-unavailable, 
-    #seantis-overview-calendar .event-unavailable .fc-event-skin, 
+    #seantis-overview-calendar .event-unavailable,
+    #seantis-overview-calendar .event-unavailable .fc-event-skin,
     #seantis-overview-calendar .event-unavailable .fc-event-head {
         background-color: $reservation-unavailable-color !important;
     }
@@ -53,7 +69,6 @@
         }
     }
 }
-
 /* @end */
 
 /* @group calendar context-menu */
@@ -79,11 +94,17 @@
 
 /* @group calendar legend */
 .portaltype-seantis-reservation-resource .legend {
-    margin-top: -1em;
     position: relative;
-    left: -1px;
     padding-top: 0.25em;
     padding: 0.25em 0.5em;
+}
+/* @end */
+
+/* @group reservation form */
+.seantis-reservation-form {
+    span.option {
+        display: block;
+    }
 }
 /* @end */
 
@@ -91,35 +112,60 @@
 .reservation-urls {
     float: right;
 }
+.reservation-urls .reservation-action {
+    @include tag();
+    display: inline-block;
+    float: none;
+    margin-right: 0;
+}
+.reservation-urls .reservation-action-approve {
+    background: #e7f0e7;
+}
+.reservation-urls .reservation-action-deny,
+.reservation-urls .reservation-action-revoke {
+    background: #f0e7e7;
+    border: 1px solid #f0e7e7;
+}
 /* @end */
 
 /* @group your reservations */
-.your-reservations, .your-reservations-view {
+
+div.your-reservations, div.your-reservations-view {
     background-color: $lightgray2;
-    padding: 1em;
-    margin-bottom: 1em;
+    padding: .75em;
+    margin: 0 0 1em 0;
 
     h1, h2 {
-        margin-top: 0;
-        margin-bottom: 0.5em;
+        margin: 0;
         font-weight: normal;
         font-size: $font-size-18;
     }
 
-    a, span {
-        display: block;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-left: 1em;
+        margin-bottom: 0;
     }
 
-    .remove-url {
-        position: absolute;
-        right: 0;
-        top: 0;
+    .your-reservation-title {
+        float: left !important;
+        margin: 0 .3em .25em 0;  
     }
 
-    br {
-        display: none;
+    .your-reservation-title {
+        font-weight: bold;
+    }
+
+    .your-reservation-header {
+        margin-top: .5em;
+    }
+
+    .confirm-reservations, .formControls {
+        margin-top: .5em;
     }
 }
+
 /* @end */
 
 /* @group manage reservations inline */
@@ -156,13 +202,13 @@
         .reservation-title {
             background-color: $lightgray2;
             margin-bottom: 0.25em;
-            padding: 0.25em 0.5em;
+            padding: 0.25em 0.4em 0.4em 0.4em;
         }
 
         .reservation-title h3 {
             display: inline;
             font-weight: normal;
-        }    
+        }
 
         .reservation-delete {
             float: right;
@@ -178,13 +224,10 @@
             float: left;
             width: 50%;
 
-            span {
-                font-weight: bold;
-            }
-
             span.label {
                 font-weight: normal;
                 margin-right: 0.5em;
+                color: $darkgray;
             }
         }
 
@@ -193,19 +236,36 @@
             width: 50%;
         }
 
-        .block-title {
-            font-weight: bold;
-        }
-
         .reservation-data-update {
             margin-top: 1em;
+        }
+
+        .block-title {
+            font-weight: bold;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            border-bottom: 1px solid #efefef;
+        }
+
+        .reservation-data > div {
+            margin-bottom: 0.5em;
+        }
+
+        .reservation-data .label {
+            display: block;
+        }
+
+        .reservation-data .reservation-urls {
+            float: none;
+            margin-top: 1em;
+            display: inline-block
         }
     }
 }
 /* @end */
 
 /* @group reservation listing side-by-side (as defined in reservation base.css */
-@media screen and (max-width: 979px) {
+@media screen and (max-width: $screen-tablet-landscape) {
     .splitscreen {
         float: none;
         clear: both;
@@ -232,7 +292,7 @@
         width: 40%;
     }
 
-    @media screen and (max-width: 979px) {
+    @media screen and (max-width: $screen-tablet-landscape) {
         .resource-listing,
         .resource-listing-overview {
             float: none;
@@ -285,6 +345,31 @@
     }
 }
 
+/* @end */
+
+/* @group limited list */
+
+.limitedList {
+    width: auto;
+    max-width: 600px;
+    max-height: 500px;
+
+    .fc-event {
+        padding: 2px 6px 1px 6px;
+        display: inline-block;
+        border-radius: 2px;
+        margin-bottom: 0.5em;
+    }
+
+    .fc-event-time,
+    .fc-event-title {
+        font-size: 1.1em;
+    }
+
+    .fc-event-inner {
+        width: auto;
+    }
+}
 /* @end */
 
 /* @group overviewlets */
@@ -377,6 +462,205 @@
 
 table.timetable div.timespan div.occupied {
     background-color: $reservation-unavailable-color;
+}
+/* @end */
+
+/* @group broken data */
+#broken-data {
+    background-color: $lightgray;
+    padding: 1em;
+    margin-bottom: 1em;
+
+    h2 {
+        margin: 0 0 0.5em 0;
+    }
+    .short-message,
+    .long-message {
+        margin-bottom: 1em;
+    }
+    .long-message {
+        color: $darkgray;
+        max-width: 500px;
+    }
+    .reservation-data {
+        color: $darkgray;
+        margin-top: -1em;
+    }
+    .reservation-data {
+        .block-title,
+        .label {
+            border-bottom-color: $message-color-error;
+            color: $message-color-error;
+        }
+    }
+}
+/* @end */
+
+/* @group timeframes trigger */
+.timeframes-trigger {
+    background: url('htmlfilter_icon.png') no-repeat 0 0;
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    border-bottom: none !important;
+    vertical-align: middle;
+    position: relative;
+    left: -9px;
+}
+/* @end */
+
+/* @group search and reserve view */
+
+.reservation-search {
+
+    .searchresults-header {
+        border-bottom: 1px solid $page-bordercolor;
+        padding-bottom: 0;
+        background-color: $lightgray;
+        padding: 0 0 5px 0;
+
+        .resultinfo {
+            float: left;
+            line-height: 0.5em;
+        }
+
+        .resultactions div {
+            float: right;
+            line-height: 0.5em;
+
+            margin: 1em 0.6em;
+            color: $darkgray;
+
+            position: relative;
+            top: 1px;
+        }
+
+        .button {
+            float: right;
+            line-height: 0.5em;
+
+            background: white;
+            color: $darkgray;
+
+            border-color: $page-bordercolor;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            color: $text-color;
+            border-color: $input-bordercolor;
+        }
+    }
+
+    // this field is hidden, but it still has a small height when displayed
+    #formfield-form-widgets-timeframes {
+        display: none;
+    }
+
+    .searchbox {
+        float: left;
+
+        padding: 1em;
+        background-color: $lightgray;
+    }
+
+    .resultinfo {
+        color: $darkgray;
+        margin: 1.1em 0 0 1em;
+    }
+
+    .searchhelp {
+        float: left;
+        padding: 1em 1em 1em 2em;
+        color: $darkgray;
+    }
+
+    .searchresults {
+        float: left;
+        padding-left: 2em;
+
+        /* have more space in the search results than usual */
+        .new-day td {
+            padding-top: 1.5em;
+        }
+    }
+
+    .resultbox {
+        a.button.destructive {
+            line-height: 1.2em;
+            position: relative;
+            top: 1px;
+        }
+    }
+
+    @media screen and (max-width: $screen-tablet) {
+        .searchbox,
+        .searchhelp,
+        .searchresults,
+        #formfield-form-widgets-start_time,
+        #formfield-form-widgets-end_time {
+            float: none !important;
+            clear: both !important;
+        }
+
+        .searchresults {
+            padding-left: 0;
+        }
+
+        .searchbox {
+            padding-top: 1px;
+        }
+    }
+}
+
+// display the searchresults differently if within a limited list
+// like on the reservation-selection form
+.limitedList .searchresults {
+    float: none;
+    padding-left: 0;
+}
+/* @end */
+
+/* @group allocations table macro */
+.allocations-table {
+    margin-bottom: 1.5em;
+
+    .result-text {
+        color: $darkgray;
+    }
+
+    .result-time {
+        border-radius: 2px;
+        color: white;
+        padding: 2px 8px;
+        margin-right: 0.25em;
+    }
+
+    td {
+        padding-top: 0.5em;
+    }
+
+    td .result-day {
+        @include tag();
+
+        color: $text-color;
+        float: none;
+        min-width: 100px;
+        text-align: center;
+        line-height: 1.75em;
+        margin: 0;
+    }
+
+    .new-day td {
+        padding-top: 1em;
+    }
+
+    tr td:first-child {
+        padding-right: 9px;
+    }
+    tr td:last-child {
+        padding-left: 5px;
+    }
 }
 
 /* @end */

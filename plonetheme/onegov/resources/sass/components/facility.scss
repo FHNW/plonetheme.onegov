@@ -5,7 +5,6 @@
     float: left;
     width: 60%;
     @include boxsizing(border-box);
-
 }
 
 .facilityOverview {
@@ -14,13 +13,12 @@
     @include boxsizing(border-box);
 }
 
-@media screen and (max-width: 979px) {
+@media screen and (max-width: $screen-tablet-landscape) {
     .facilityInfo, .facilityOverview {
         float: none;
         width: 100%;
     }
 }
-
 
 .portaltype-seantis-dir-facility-directory #directoryResultList {
     width: 100%;
@@ -80,6 +78,28 @@
         width: 70%;      
     }
 
+    .resourceDescription {
+        color: $darkgray;
+        max-width: 400px;
+        margin-bottom: 1em;
+    }
+    .directoryChildren h2 {
+        margin-top: 1em;
+    }
+    .directoryChildren p {
+        margin-bottom: 1.2em;
+    }
+    .directoryChildren .resourceTitle {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    .directoryChildren .resourceDescription {
+        display: inline-block;
+    }
+    .directoryChildren .resourceDescription:hover {
+        text-decoration: none;
+    }
+
     /* not nice, but seantis.reservation currently needs this */
     .directoryResult.groupSelection, 
     .resourceItem.groupSelection {
@@ -104,7 +124,8 @@
     display: none;
 }
 
-.singlecalendar {
+.singlecalendar,
+.reservation-search {
     .directoryResult {
         padding: 1em;
         margin-bottom: $body-line-height;
@@ -120,6 +141,10 @@
             margin: 0 2em 1em 0;
             max-width: 50%;
         }
+    }
+
+    .formTabs {
+        margin-bottom: 1em;
     }
 }
 /* @group */

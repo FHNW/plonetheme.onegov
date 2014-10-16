@@ -341,10 +341,12 @@ a,
     }
   }
   & .current {
-    border-bottom: 1px solid $lightgray2;
     padding: 0.5em 0.5em;
     @include gradient($navigation-gradient-from, $navigation-gradient-to);
     font-weight: bold;
+    + li.child {
+      border-top: 1px solid $lightgray2;
+    }
   }
   & .parent, & .sibling {
     border-bottom: 1px solid $lightgray2;
@@ -600,6 +602,27 @@ dl.teaser_portlet .portletHeader img {
 
 /* @end */
 
+/* @group post it portlet */
+
+#dashboard dl.portlet.postit.portletPostIt {
+  $postit-bg: #DCC126;
+  dt {
+    background-color: $postit-bg;
+    color: #000;
+    .portletActionsWrapper {
+      background: lighten(desaturate($postit-bg, 20%), 20%);
+    }
+  }
+  dd {
+    background: lighten($postit-bg, 40%);
+    &.even {
+      background: lighten($postit-bg, 35%);
+    }
+  }
+}
+
+/* @end */
+
 /* @group dashboard */
 
 $dashboard-bg: $global-navigation-border-color;
@@ -715,9 +738,6 @@ ol {
 }
 .discreet {
   color: $text-color-light;
-}
-.documentDescription {
-  display: none;
 }
 
 /* @end */

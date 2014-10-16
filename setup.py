@@ -1,8 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-#version = '1.2.5.dev0'
-version = '1.2.0.'
+version = '1.3.4.dev0'
 
 tests_require = [
     'ftw.builder',
@@ -25,7 +24,9 @@ setup(name='plonetheme.onegov',
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
         "Framework :: Plone",
+        "Framework :: Plone :: 4.3",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
         ],
       keywords='',
       author='Julian Infanger',
@@ -42,11 +43,11 @@ setup(name='plonetheme.onegov',
         'Products.CMFCore',
         'collective.mtrsetup',
         'ftw.mobilenavigation>=1.2.3',
-        'ftw.slider',
+        'ftw.slider >= 2.1.1',
         'ftw.upgrade',
         'setuptools',
         'plone.batching',
-        'PyScss',
+        'PyScss <= 1.2.1',
         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
